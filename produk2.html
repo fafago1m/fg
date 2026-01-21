@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRIS & Payroll Terbaik - Farmagitechs</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'farma-orange': '#ff5c35',
+                        'farma-dark': '#192733',
+                        'light-bg': '#F8FAFC',
+                        'card-border': '#E2E8F0',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        .navbar-pill { background-color: #ffffff; border-radius: 9999px; }
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0; opacity: 0; overflow: hidden;
+        }
+        #mobile-menu.open { max-height: 500px; opacity: 1; }
+        .reveal-on-scroll {
+            opacity: 0; transform: translateY(30px); filter: blur(5px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
+        }
+        .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+    </style>
+</head>
+<body class="bg-white text-farma-dark font-sans antialiased">
+
+     <nav class="fixed top-4 md:top-6 left-0 right-0 z-50 px-4 md:px-8 reveal-on-scroll is-visible">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="navbar-pill w-full px-4 md:px-6 py-2 md:py-3 flex items-center justify-between border border-gray-100 shadow-sm relative z-50">
+                
+                <a href="#" class="flex items-center gap-2">
+                    <div class="h-8 md:h-10 w-auto flex items-center">
+                       <img src="image 9.png" onerror="this.src='https://placehold.co/40x40/FF8300/white?text=F'" class="h-7 md:h-9 w-auto" alt="Logo"> 
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="font-bold text-lg md:text-xl tracking-tight text-farma-orange">FARMA<span class="text-black">GITECHS</span> </span>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-8 font-semibold text-[15px]">
+                    <a href="farma.html" class="text-gray-600 hover:text-farma-orange transition-colors">Beranda</a>
+                    <a href="#" class="text-gray-600 hover:text-farma-orange transition-colors">Tentang Kami</a>
+                    <a href="#" class="text-gray-600 hover:text-farma-orange transition-colors">Layanan</a>
+                    <a href="produk.html" class="text-farma-orange border-b-2 border-farma-orange pb-0.5">Produk</a>
+                    <a href="#" class="text-gray-600 hover:text-farma-orange transition-colors">Berita & Artikel</a>
+                </div>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-farma-orange hover:border-farma-orange transition-all">
+                        <i class="ph-bold ph-magnifying-glass text-lg"></i>
+                    </button>
+
+                    <a href="#kontak" class="bg-farma-orange text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-orange-600 transition-all shadow-md hover:shadow-lg">
+                        Dapatkan Demo
+                    </a>
+                </div>
+
+                <button id="hamburger-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-farma-dark text-2xl">
+                    <i class="ph-bold ph-list"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-[24px] shadow-xl border border-gray-100 p-6 flex flex-col gap-4 lg:hidden z-40">
+                <a href="farma.html" class="text-gray-600 font-medium text-lg hover:text-farma-orange">Beranda</a>
+                <a href="#" class="text-gray-600 font-medium text-lg hover:text-farma-orange">Tentang Kami</a>
+                <a href="#" class="text-gray-600 font-medium text-lg hover:text-farma-orange">Layanan</a>
+                <a href="produk.html" class="text-farma-orange font-bold text-lg">Produk</a>
+                <a href="#" class="text-gray-600 font-medium text-lg hover:text-farma-orange">Berita & Artikel</a>
+                
+                <hr class="border-gray-100">
+
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-farma-orange hover:border-farma-orange transition-all shrink-0">
+                        <i class="ph-bold ph-magnifying-glass text-xl"></i>
+                    </button>
+                    <a href="#kontak" class="flex-1 bg-farma-orange text-white text-center text-base font-bold py-3 rounded-full hover:bg-orange-600 transition-all shadow-sm">
+                        Dapatkan Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-12 items-center">
+                
+                <div class="order-2 lg:order-1 reveal-on-scroll">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-farma-dark leading-[1.2] md:leading-[1.15] mb-4 md:mb-6">
+                        Aplikasi HRIS & <span class="text-farma-orange">Payroll Terbaik</span>
+                    </h1>
+                    <p class="text-lg md:text-xl font-bold text-gray-700 mb-4">
+                        (Kelola Absensi, Cuti, dan Penggajian Karyawan)
+                    </p>
+                    <p class="text-gray-600 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
+                        Satu aplikasi untuk absensi selfie, pengajuan cuti online, penggajian otomatis, dan manajemen karyawan yang lebih efisien.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="inline-flex justify-center items-center px-6 py-3 md:px-8 md:py-4 bg-farma-orange text-white font-bold rounded-xl hover:bg-orange-600 transition-colors text-sm md:text-base shadow-lg hover:shadow-xl">
+                            Konsultasi Gratis
+                            <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 relative reveal-on-scroll delay-200">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%]  -z-10"></div>
+                    
+                    <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Untitled.png" 
+                         alt="Tampilan Symphoenix Farmagitechs" 
+                         class=" h-auto object-contain  relative z-10 w-10/12 transition-transform duration-500">
+                </div>
+
+            </div>
+        </div>
+    </section>
+   
+    <section class="py-16 md:py-24 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative z-10">
+                    <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Gemini_Generated_Image_k35bh3k35bh3k35b.png" 
+                         alt="HR Problems" 
+                         class="w-full h-[400px] md:h-[500px] rounded-[40px] object-cover ring-1 ring-gray-200">
+                </div>
+                <div class="reveal-on-scroll delay-200">
+                     <h2 class="text-3xl md:text-5xl font-extrabold text-farma-dark mb-8 leading-[1.1] tracking-tight">
+                    Kelola HR Masih Ribet?<br>
+                    <span class="text-farma-orange">Ini Masalah Umumnya:</span>
+                </h2>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Absensi manual rawan curang
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Pengajuan cuti tidak terdata
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Gaji salah hitung
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Laporan HR berantakan
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Payroll makan waktu
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="ph-bold ph-warning-circle text-farma-orange text-2xl"></i> Data karyawan tidak terstruktur
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex justify-center items-center px-8 py-3 bg-farma-dark text-white font-bold rounded-xl hover:bg-farma-orange transition-all">
+                        Dapatkan Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16 reveal-on-scroll">
+            <h2 class="text-2xl md:text-4xl font-bold text-farma-dark leading-tight">
+                Eksplorasi Antarmuka <span class="text-farma-orange">Symphoenix</span>
+            </h2>
+            <p class="text-gray-500 mt-4 text-sm md:text-lg max-w-2xl mx-auto">
+                Tampilan sistem yang modern, intuitif, dan dirancang khusus untuk meningkatkan efisiensi operasional harian Anda.
+            </p>
+        </div>
+
+        <div class="relative reveal-on-scroll delay-200">
+            <div id="carousel-wrapper" class="relative overflow-hidden rounded-[24px] md:rounded-[40px] border border-gray-100 shadow-2xl bg-light-bg">
+                <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+                    
+                    <div class="min-w-full flex-shrink-0">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-8.50.06-AM-1-1024x525.jpeg" 
+                             class="w-full h-auto object-cover" alt="Symphoenix Dashboard 1">
+                    </div>
+                    
+                    <div class="min-w-full flex-shrink-0">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-8.50.05-AM-5-1024x430.jpeg" 
+                             class="w-full h-auto object-cover" alt="Symphoenix Dashboard 2">
+                    </div>
+                    
+                    <div class="min-w-full flex-shrink-0">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-8.50.05-AM-1024x415.jpeg" 
+                             class="w-full h-auto object-cover" alt="Symphoenix Dashboard 3">
+                    </div>
+                    
+                    <div class="min-w-full flex-shrink-0">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-8.50.05-AM-3-1024x401.jpeg" 
+                             class="w-full h-auto object-cover" alt="Symphoenix Dashboard 4">
+                    </div>
+
+                    <div class="min-w-full flex-shrink-0">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-8.50.05-AM-4-1024x463.jpeg" 
+                             class="w-full h-auto object-cover" alt="Symphoenix Dashboard 5">
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="carousel-dots" class="flex justify-center gap-2 mt-8">
+                </div>
+
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md shadow-lg flex items-center justify-center text-farma-dark hover:bg-farma-orange hover:text-white transition-all">
+                <i class="ph-bold ph-caret-left text-xl"></i>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md shadow-lg flex items-center justify-center text-farma-dark hover:bg-farma-orange hover:text-white transition-all">
+                <i class="ph-bold ph-caret-right text-xl"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const track = document.getElementById('carousel-track');
+    const slides = Array.from(track.children);
+    const dotsContainer = document.getElementById('carousel-dots');
+    let currentIndex = 0;
+
+    // Membuat Dots secara dinamis
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'w-8 bg-farma-orange' : 'w-2 bg-gray-300'}`;
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('w-8', 'bg-farma-orange');
+                dot.classList.remove('w-2', 'bg-gray-300');
+            } else {
+                dot.classList.remove('w-8', 'bg-farma-orange');
+                dot.classList.add('w-2', 'bg-gray-300');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }                                           
+
+    // Auto Slide setiap 4 detik
+    setInterval(nextSlide, 4000);
+</script>
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16 reveal-on-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold text-farma-dark mb-4">Waktunya pakai aplikasi HRIS terbaik untuk perusahaan Anda.</h2>
+            <p class="text-xl text-farma-dark/50">Solusi HRIS Lengkap dalam Satu Aplikasi</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 reveal-on-scroll">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-[#fff5f2] border border-[#ffdec9] flex items-center justify-center shrink-0 mt-1">
+                            <span class="text-farma-orange font-bold text-sm">01</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-farma-dark mb-2">Payroll Otomatis & Akurat</h4>
+                            <p class="text-farma-dark/60 text-base leading-relaxed">
+                                Absensi berbasis GPS dan verifikasi wajah (Selfie Anti-Fraud) menjamin kehadiran staf valid dan akurat, secara efektif mencegah titip absen. Data real-time ini langsung terintegrasi untuk perhitungan gaji yang bebas error.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-[#fff5f2] border border-[#ffdec9] flex items-center justify-center shrink-0 mt-1">
+                            <span class="text-farma-orange font-bold text-sm">02</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-farma-dark mb-2">Absensi Online & Selfie Anti-Fraud</h4>
+                            <p class="text-farma-dark/60 text-base leading-relaxed">
+                                Pastikan kehadiran staf akurat dengan verifikasi wajah (Selfie Anti-Fraud) dan lokasi (GPS). Cegah kecurangan titip absen dan integrasikan data real-time langsung ke penggajian. Hal ini membuat penggajian lebih akurat.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-[#fff5f2] border border-[#ffdec9] flex items-center justify-center shrink-0 mt-1">
+                            <span class="text-farma-orange font-bold text-sm">03</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-farma-dark mb-2">Cuti Online & Manajemen Izin</h4>
+                            <p class="text-farma-dark/60 text-base leading-relaxed">
+                                Kelola seluruh permintaan cuti dan izin staf secara digital melalui aplikasi. Fitur ini memungkinkan pengajuan, persetujuan, dan penolakan real-time berbasis dashboard, sekaligus menghitung sisa jatah cuti karyawan secara otomatis dan akurat.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-[#fff5f2] border border-[#ffdec9] flex items-center justify-center shrink-0 mt-1">
+                            <span class="text-farma-orange font-bold text-sm">04</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-farma-dark mb-2">Dashboard HR Lengkap</h4>
+                            <p class="text-farma-dark/60 text-base leading-relaxed">
+                                Akses seluruh data dan analitik SDM Anda di satu tempat terpusat. Dashboard ini menyajikan insight real-time mengenai kehadiran, cuti, kinerja, dan status kepegawaian, membantu manajemen membuat keputusan cepat dan strategis berbasis data.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center reveal-on-scroll delay-200">
+                    <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Untitled-design-1-864x1536.png" 
+                         alt="Dashboard HRIS" 
+                         class="w-full max-w-sm h-auto object-contain">
+                </div>
+            </div>
+            <div class="text-center mt-12 reveal-on-scroll">
+                <a href="#" class="inline-flex justify-center items-center px-10 py-4 bg-farma-orange text-white font-bold rounded-xl shadow-lg">
+                    Dapatkan Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-farma-orange font-bold tracking-wider text-xs md:text-sm uppercase mb-2 block">Mengapa Kami?</span>
+                <h2 class="text-2xl md:text-4xl font-bold mb-4">Kenapa Harus Farmagitechs?</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Farmagitechs berpengalaman lebih dari 10 tahun membantu digitalisasi layanan Rumah Sakit dan Klinik di Indonesia.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="reveal-on-scroll delay-100 p-6 md:p-8 rounded-[30px] relative overflow-hidden group bg-cover bg-center bg-no-repeat bg-white/75 hover:bg-white/90 bg-blend-overlay transition-all duration-300 border border-transparent hover:border-orange-200 hover:shadow-lg hover:-translate-y-1"
+                     style="background-image: url('https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/front_page/fp_reason_1.png');">
+                    <i class="ph ph-medal text-4xl text-farma-orange mb-4 relative z-10"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 relative z-10">Berpengalaman</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">Pengalaman lebih dari 10 tahun mengimplementasikan produk untuk segala level Rumah Sakit di Indonesia.</p>
+                </div>
+
+                <div class="reveal-on-scroll delay-200 p-6 md:p-8 rounded-[30px] relative overflow-hidden group bg-cover bg-center bg-no-repeat bg-white/75 hover:bg-white/90 bg-blend-overlay transition-all duration-300 border border-transparent hover:border-orange-200 hover:shadow-lg hover:-translate-y-1"
+                     style="background-image: url('https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/front_page/fp_reason_2.png');">
+                    <i class="ph ph-headset text-4xl text-farma-orange mb-4 relative z-10"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 relative z-10">Support System</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">Tim support kami selalu siap siaga melayani setiap kendala terkait sistem manajemen Rumah Sakit dan Klinik Anda.</p>
+                </div>
+
+                <div class="reveal-on-scroll delay-300 p-6 md:p-8 rounded-[30px] relative overflow-hidden group bg-cover bg-center bg-no-repeat bg-white/75 hover:bg-white/90 bg-blend-overlay transition-all duration-300 border border-transparent hover:border-orange-200 hover:shadow-lg hover:-translate-y-1"
+                     style="background-image: url('https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/front_page/fp_reason_3.png');">
+                    <i class="ph ph-chats-circle text-4xl text-farma-orange mb-4 relative z-10"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 relative z-10">GRATIS Konsultasi</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">Kami menawarkan konsultasi GRATIS & TANPA KOMITMEN kepada Customer terkait sistem manajemen Rumah Sakit sebelum mengambil keputusan.</p>
+                </div>
+
+                <div class="reveal-on-scroll delay-100 p-6 md:p-8 rounded-[30px] relative overflow-hidden group bg-cover bg-center bg-no-repeat bg-white/75 hover:bg-white/90 bg-blend-overlay transition-all duration-300 border border-transparent hover:border-orange-200 hover:shadow-lg hover:-translate-y-1"
+                     style="background-image: url('https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/front_page/fp_reason_4.png');">
+                    <i class="ph ph-phone-call text-4xl text-farma-orange mb-4 relative z-10"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 relative z-10">Layanan On-Call 24/7</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">Kami memberikan layanan on-call 24/7 apabila Customer mengalami kendala dalam mengoperasikan sistem.</p>
+                </div>
+
+                <div class="reveal-on-scroll delay-200 p-6 md:p-8 rounded-[30px] relative overflow-hidden group bg-cover bg-center bg-no-repeat bg-white/75 hover:bg-white/90 bg-blend-overlay transition-all duration-300 border border-transparent hover:border-orange-200 hover:shadow-lg hover:-translate-y-1 md:col-span-2"
+                     style="background-image: url('https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/front_page/fp_reason_5.png');">
+                    <i class="ph ph-puzzle-piece text-4xl text-farma-orange mb-4 relative z-10"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 relative z-10">Customizable</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">Software dapat di custom sesuai dengan kebutuhan dan permintaan Rumah Sakit dan Klinik Anda. Fleksibilitas adalah kunci layanan kami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-light-bg border-t border-card-border">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 reveal-on-scroll">
+                <h2 class="text-farma-orange font-bold uppercase tracking-widest text-xs md:text-sm mb-4">
+                    Klien Farmagitechs
+                </h2>
+                <h3 class="text-2xl md:text-5xl font-bold text-farma-dark mb-6 md:mb-8 leading-tight">
+                    Dipercaya oleh Fasilitas Kesehatan <br>dari Sabang hingga Merauke
+                </h3>
+                <p class="text-farma-dark/70 text-sm md:text-lg leading-relaxed">
+                    Farmagitechs telah hadir sebagai mitra digitalisasi kesehatan di seluruh pelosok Indonesia. Kepercayaan dari berbagai RSUD, rumah sakit swasta, dan klinik di berbagai wilayah menjadi bukti bahwa solusi kami mampu beradaptasi dengan keberagaman kebutuhan operasional dan infrastruktur di tiap daerah. Kami bangga dapat berkontribusi dalam pemerataan kualitas layanan kesehatan nasional.
+                </p>
+            </div>
+
+            <div class="w-full relative flex justify-center reveal-on-scroll delay-200">
+                <iframe
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1Mg0x1VOE3O4Ie0wQjiLWUM0vLDw9cgY&femb=1&ll=-1.1402150000393148%2C106.7474749&z=5"
+                    class="w-full max-w-5xl h-[300px] md:h-[420px] rounded-2xl border shadow-lg grayscale-[50%] hover:grayscale-0 transition-all duration-700"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjUsIDM5LCA1MSwgMC4wOCkiLz48L3N2Zz4=')] opacity-30 pointer-events-none rounded-2xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center mb-12 md:mb-16 reveal-on-scroll">
+                <h2 class="text-2xl md:text-5xl font-bold text-farma-dark mb-4">
+                    Symphoenix SIMRS
+                </h2>
+                <p class="text-base md:text-xl text-farma-dark/60 font-medium">
+                    Paket SIMRS & E-Rekam Medis
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="reveal-on-scroll delay-100 group bg-white rounded-[24px] md:rounded-[32px] overflow-hidden border border-card-border hover:border-farma-orange transition-colors duration-300 flex flex-col h-full hover:shadow-lg">
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Gemini_Generated_Image_yiu5ksyiu5ksyiu5.png" 
+                             alt="Paket Klinik" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                         <div class="absolute inset-0 bg-farma-dark/0 group-hover:bg-farma-dark/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-farma-dark mb-4">Paket Klinik</h3>
+                        <p class="text-farma-dark/60 text-sm leading-relaxed mb-8 flex-grow">
+                            Solusi SIM Klinik lengkap, ideal untuk fasilitas kesehatan dengan volume pasien harian yang terfokus. Memastikan kepatuhan E-Rekam Medis Kemenkes dan mempercepat layanan di area pendaftaran, poli, dan farmasi. Fokus pada kemudahan penggunaan dan implementasi yang cepat.
+                        </p>
+                        
+                        <div class="pt-6 border-t border-dashed border-gray-200">
+                            
+                            <div class="flex items-center justify-between">
+                                <span class="text-farma-dark font-bold text-base md:text-lg">Harga (By Request)</span>
+                                <a href="#" class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-light-bg text-farma-orange group-hover:bg-farma-orange group-hover:text-white transition-all duration-300">
+                                    <i class="ph-bold ph-arrow-right"></i>
+                                </a>
+                            </div>
+                            <a href="#" class="block mt-4 text-center py-3 rounded-xl bg-farma-orange text-white font-bold hover:bg-farma-dark transition-all duration-300">
+                                Tanya Harga
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll delay-200 group bg-white rounded-[24px] md:rounded-[32px] overflow-hidden border border-card-border hover:border-farma-orange transition-colors duration-300 flex flex-col h-full hover:shadow-lg">
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Gemini_Generated_Image_gb6vy8gb6vy8gb6v.png" 
+                             alt="Paket RS Kecil" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-farma-dark/0 group-hover:bg-farma-dark/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-farma-dark mb-4">Paket RS Kecil</h3>
+                        <p class="text-farma-dark/60 text-sm leading-relaxed mb-8 flex-grow">
+                            Paket komprehensif untuk mengelola kompleksitas Rumah Sakit yang berkembang. Menghubungkan seluruh unit layanan (Rawat Jalan, Rawat Inap, Radiologi, Lab, IGD) dalam satu sistem. Dilengkapi fitur Bridging BPJS (V-Claim) dan dashboard analitik real-time yang krusial untuk manajemen dan persiapan akreditasi.
+                        </p>
+                        
+                        <div class="pt-6 border-t border-dashed border-gray-200">
+                            
+                            <div class="flex items-center justify-between">
+                                <span class="text-farma-dark font-bold text-base md:text-lg">Harga (By Request)</span>
+                                <a href="#" class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-light-bg text-farma-orange group-hover:bg-farma-orange group-hover:text-white transition-all duration-300">
+                                    <i class="ph-bold ph-arrow-right"></i>
+                                </a>
+                            </div>
+                            <a href="#" class="block mt-4 text-center py-3 rounded-xl bg-farma-orange text-white font-bold hover:bg-farma-dark transition-all duration-300">
+                                Tanya Harga
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll delay-300 group bg-white rounded-[24px] md:rounded-[32px] overflow-hidden border border-card-border hover:border-farma-orange transition-colors duration-300 flex flex-col h-full hover:shadow-lg">
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <img src="https://farmagitechs.co.id/wp-content/uploads/2025/12/Gemini_Generated_Image_rtgv0artgv0artgv.png" 
+                             alt="Paket RS Besar" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-farma-dark/0 group-hover:bg-farma-dark/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-farma-dark mb-4">Paket RS Besar</h3>
+                        <p class="text-farma-dark/60 text-sm leading-relaxed mb-8 flex-grow">
+                            Dirancang untuk Rumah Sakit besar dan grup fasilitas kesehatan yang membutuhkan solusi sepenuhnya. Selain fitur lengkap, paket ini mencakup pengembangan modul kustom, integrasi mendalam dengan sistem pihak ketiga, serta dukungan prioritas 24/7 dengan tim dedicated untuk memastikan zero downtime dan analisis data bisnis yang paling canggih.
+                        </p>
+                        
+                        <div class="pt-6 border-t border-dashed border-gray-200">
+                            
+                            <div class="flex items-center justify-between">
+                                <span class="text-farma-dark font-bold text-base md:text-lg">Harga (By Request)</span>
+                                <a href="#" class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-light-bg text-farma-orange group-hover:bg-farma-orange group-hover:text-white transition-all duration-300">
+                                    <i class="ph-bold ph-arrow-right"></i>
+                                </a>
+                            </div>
+                            <a href="#" class="block mt-4 text-center py-3 rounded-xl bg-farma-orange text-white font-bold hover:bg-farma-dark transition-all duration-300">
+                                Tanya Harga
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <div class="text-center mb-10 md:mb-12 reveal-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-farma-dark mb-3">
+                    FAQ (Frequently Asked Questions)
+                </h2>
+                <p class="text-farma-dark/60 text-sm md:text-base">
+                    Beberapa pertanyaan yang sering ditanyakan oleh calon kustomer Farmagitech.
+                </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden divide-y divide-gray-200 bg-white reveal-on-scroll delay-100">
+                
+                <details class="group p-4 [&_summary::-webkit-details-marker]:hidden" name="faq" open>
+                    <summary class="flex cursor-pointer items-center justify-between text-farma-dark font-bold group-hover:text-farma-orange transition-colors">
+                        <span class="text-base md:text-lg">Apa itu SIMRS terintegrasi?</span>
+                        <span class="ml-4 shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="ph-bold ph-caret-down text-xl text-gray-400 group-open:text-farma-orange"></i>
+                        </span>
+                    </summary>
+
+                    <div class="mt-4 text-farma-dark/70 text-sm leading-relaxed border-t border-dashed border-gray-100 pt-4">
+                        <p class="mb-3">SIMRS terintegrasi adalah sistem yang menghubungkan seluruh unit fungsionalitas di fasilitas kesehatan (pendaftaran, poli, farmasi, kasir, dll.) ke dalam satu database utama. Symphoenix menggunakan konsep ini untuk:</p>
+                        <ul class="list-disc pl-5 space-y-1 marker:text-farma-orange">
+                            <li><strong>Menghilangkan Duplikasi Data:</strong> Data pasien cukup diinput sekali.</li>
+                            <li><strong>Akurasi Transaksi:</strong> Memastikan billing dan stok farmasi selalu sinkron.</li>
+                            <li><strong>Laporan Real-Time:</strong> Memudahkan manajemen membuat keputusan cepat berbasis data.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="group p-4 [&_summary::-webkit-details-marker]:hidden" name="faq">
+                    <summary class="flex cursor-pointer items-center justify-between text-farma-dark font-bold group-hover:text-farma-orange transition-colors">
+                        <span class="text-base md:text-lg">Apakah Sistem Symphoenix Sudah Mendukung RME?</span>
+                        <span class="ml-4 shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="ph-bold ph-caret-down text-xl text-gray-400 group-open:text-farma-orange"></i>
+                        </span>
+                    </summary>
+
+                    <div class="mt-4 text-farma-dark/70 text-sm leading-relaxed border-t border-dashed border-gray-100 pt-4">
+                        <p>Ya, Symphoenix didesain sepenuhnya sesuai dengan standar data variabel dan metadata yang ditetapkan oleh Kementerian Kesehatan (SATUSEHAT), memastikan kepatuhan regulasi dan kemudahan pelaporan.</p>
+                    </div>
+                </details>
+
+                <details class="group p-4 [&_summary::-webkit-details-marker]:hidden" name="faq">
+                    <summary class="flex cursor-pointer items-center justify-between text-farma-dark font-bold group-hover:text-farma-orange transition-colors">
+                        <span class="text-base md:text-lg">Bisakah Diintegrasikan dengan BPJS Kesehatan?</span>
+                        <span class="ml-4 shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="ph-bold ph-caret-down text-xl text-gray-400 group-open:text-farma-orange"></i>
+                        </span>
+                    </summary>
+
+                    <div class="mt-4 text-farma-dark/70 text-sm leading-relaxed border-t border-dashed border-gray-100 pt-4">
+                        <p>Sangat bisa. Kami memiliki fitur bridging V-Claim, Antrian Online (Mobile JKN), dan E-Klaim yang stabil untuk mempercepat proses administrasi pasien BPJS.</p>
+                    </div>
+                </details>
+
+                <details class="group p-4 [&_summary::-webkit-details-marker]:hidden" name="faq">
+                    <summary class="flex cursor-pointer items-center justify-between text-farma-dark font-bold group-hover:text-farma-orange transition-colors">
+                        <span class="text-base md:text-lg">Berapa lama proses implementasi dan go-live?</span>
+                        <span class="ml-4 shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="ph-bold ph-caret-down text-xl text-gray-400 group-open:text-farma-orange"></i>
+                        </span>
+                    </summary>
+
+                    <div class="mt-4 text-farma-dark/70 text-sm leading-relaxed border-t border-dashed border-gray-100 pt-4">
+                        <p>Waktu implementasi bervariasi tergantung skala RS, namun rata-rata memakan waktu 2-4 minggu hingga tahap Go-Live, mencakup migrasi data dasar dan setup infrastruktur.</p>
+                    </div>
+                </details>
+
+                <details class="group p-4 [&_summary::-webkit-details-marker]:hidden" name="faq">
+                    <summary class="flex cursor-pointer items-center justify-between text-farma-dark font-bold group-hover:text-farma-orange transition-colors">
+                        <span class="text-base md:text-lg">Apakah staf kami akan mendapatkan pelatihan?</span>
+                        <span class="ml-4 shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="ph-bold ph-caret-down text-xl text-gray-400 group-open:text-farma-orange"></i>
+                        </span>
+                    </summary>
+
+                    <div class="mt-4 text-farma-dark/70 text-sm leading-relaxed border-t border-dashed border-gray-100 pt-4">
+                        <p>Tentu. Paket implementasi kami mencakup pelatihan intensif untuk admin, dokter, perawat, dan staf farmasi/kasir hingga mereka mahir menggunakan sistem.</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="reveal-on-scroll bg-farma-dark rounded-[32px] md:rounded-[48px] p-8 md:p-16 relative overflow-hidden isolate shadow-2xl">
+                
+                <div class="absolute top-0 right-0 -z-10 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+
+                <div class="grid lg:grid-cols-2 gap-10 md:gap-24 items-center">
+                    
+                    <div class="max-w-xl">
+                        <h2 class="text-2xl md:text-5xl font-bold text-white mb-6 leading-[1.2]">
+                            Siap Tinggalkan Kertas & Beralih ke <span class="text-farma-orange">Manajemen Surat Digital?</span>
+                        </h2>
+                        
+                        <p class="text-white/70 text-sm md:text-lg leading-relaxed mb-8">
+                            Uji langsung E-Letter gratis selama 14 hari. Rasakan sendiri bagaimana surat masuk dan keluar Anda dapat dikelola secara instan dan transparan.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-200">
+                        <form action="#" class="space-y-4 md:space-y-6">
+                            
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-farma-dark">
+                                    Nama <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-farma-dark focus:bg-white focus:border-farma-orange outline-none transition-all duration-300 text-sm md:text-base"
+                                    placeholder="Contoh: Budi Santoso">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-farma-dark">
+                                    No. Handphone <span class="text-red-500">*</span>
+                                </label>
+                                <input type="tel"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-farma-dark focus:bg-white focus:border-farma-orange outline-none transition-all duration-300 text-sm md:text-base"
+                                    placeholder="Contoh: 08123456789">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-farma-dark">
+                                    Nama Perusahaan <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-farma-dark focus:bg-white focus:border-farma-orange outline-none transition-all duration-300 text-sm md:text-base"
+                                    placeholder="Contoh: RS Sehat Sentosa">
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-farma-orange hover:bg-orange-600 text-white font-bold text-base md:text-lg py-3 md:py-4 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 mt-4">
+                                Kirim <i class="ph-bold ph-arrow-right"></i>
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="kontak" class="bg-farma-dark pt-10 pb-6 relative overflow-hidden">
+        
+        <div class="absolute -bottom-10 -right-10 md:bottom-0 md:right-0 pointer-events-none z-0">
+            <img src="https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/base/fg_logo_wm.svg" 
+                 alt="Watermark Farmagitechs" 
+                 class="w-[200px] md:w-[450px] select-none opacity-50 md:opacity-100">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12 pb-8">
+                
+                <div class="col-span-1 md:col-span-1">
+                     <a href="#" class="block mb-6">
+                            <img src="https://farmagitechs.co.id/wp-content/themes/fg-theme/assets/images/base/fg_logo_white.svg" 
+                                 alt="Farmagitechs Logo " 
+                                 class="h-10 md:h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        PT. Farma Global Teknologi.<br>
+                        Partner digitalisasi kesehatan terpercaya di Indonesia.
+                    </p>
+
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-farma-orange transition-colors">
+                            <i class="ph-fill ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-farma-orange transition-colors">
+                            <i class="ph-fill ph-facebook-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-farma-orange transition-colors">
+                            <i class="ph-fill ph-linkedin-logo text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Perusahaan</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Karir</a></li>
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Blog & Berita</a></li>
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Produk</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Symphoenix (SIMRS)</a></li>
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">Smart Clinic</a></li>
+                        <li><a href="#" class="hover:text-farma-orange transition-colors">FG Personalia</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Hubungi Kami</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="ph-fill ph-map-pin text-white text-lg shrink-0"></i>
+                            <span>Jl. Jendral Sudirman No. 123, Jakarta Selatan, Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph-fill ph-envelope-simple text-white text-lg shrink-0"></i>
+                            <a href="mailto:info@farmagitechs.co.id" class="hover:text-farma-orange">info@farmagitechs.co.id</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph-fill ph-phone text-white text-lg shrink-0"></i>
+                            <a href="tel:+622112345678" class="hover:text-farma-orange">+62 21 1234 5678</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 py-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <p>© 2026 Farmagitechs Indonesia. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 opacity-70"></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = hamburgerBtn.querySelector('i');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.replace('ph-list', 'ph-x');
+            } else {
+                icon.classList.replace('ph-x', 'ph-list');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
